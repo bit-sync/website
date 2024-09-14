@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbit_sync_web=self.webpackChunkbit_sync_web||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome to the new website","permalink":"/blog/welcome-blog","unlisted":false,"date":"2024-09-13T00:00:00.000Z"}]}')}}]);
