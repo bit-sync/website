@@ -1,12 +1,14 @@
 ---
 sidebar_position: 1
-label: zz
 ---
 
 # Intro
 
 Discover **Bit Sync**
 
+## Open source projects
+
+- [Gwin Compiler](/docs/category/gwin-compiler)
 ## What we offer
 
 ### Host a website with Web Sync

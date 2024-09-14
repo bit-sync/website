@@ -1,0 +1,27 @@
+{
+  "id": "gwin-compiler/Intro/intro",
+  "title": "Intro into the Gwin Compiler",
+  "description": "Gwin is a Windows, gnu C/C++ compiler and Lua interpreter.",
+  "source": "@site/docs/gwin-compiler/Intro/intro.md",
+  "sourceDirName": "gwin-compiler/Intro",
+  "slug": "/gwin-compiler/Intro/",
+  "permalink": "/docs/gwin-compiler/Intro/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/bit-sync/website/docs/gwin-compiler/Intro/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gwin Compiler - Intro",
+    "permalink": "/docs/category/gwin-compiler---intro"
+  },
+  "next": {
+    "title": "Install Gwin",
+    "permalink": "/docs/gwin-compiler/Intro/installation"
+  }
+}

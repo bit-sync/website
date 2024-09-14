@@ -1,0 +1,23 @@
+{
+  "id": "gwin-compiler/make-a-c-program",
+  "title": "Make a Basic C program",
+  "description": "We will make a simple c program and compile it with gcc.",
+  "source": "@site/docs/gwin-compiler/make-a-c-program.md",
+  "sourceDirName": "gwin-compiler",
+  "slug": "/gwin-compiler/make-a-c-program",
+  "permalink": "/docs/gwin-compiler/make-a-c-program",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/bit-sync/website/docs/gwin-compiler/make-a-c-program.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Intro with headers",
+    "permalink": "/docs/gwin-compiler/Headers/intro"
+  }
+}

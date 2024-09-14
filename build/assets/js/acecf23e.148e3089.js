@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbit_sync_web=self.webpackChunkbit_sync_web||[]).push([[903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog","authorsListPath":"/blog/authors"}')}}]);

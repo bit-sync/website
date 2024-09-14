@@ -13,22 +13,20 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Cloud made easy',
+    Svg: require('@site/static/img/Cloud-Sync.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Cloud Sync is a platform that you can easily make virtual machines with just a email.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Hosting is a piece of cake',
+    Svg: require('@site/static/img/Cloud-Sync.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Web Sync is easy to use, just send us a email. And your site will be online!
       </>
     ),
   },

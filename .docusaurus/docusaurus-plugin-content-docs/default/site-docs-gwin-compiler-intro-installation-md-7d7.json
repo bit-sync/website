@@ -1,0 +1,27 @@
+{
+  "id": "gwin-compiler/Intro/installation",
+  "title": "Install Gwin",
+  "description": "1. Download the latest Release (Installer executable)",
+  "source": "@site/docs/gwin-compiler/Intro/installation.md",
+  "sourceDirName": "gwin-compiler/Intro",
+  "slug": "/gwin-compiler/Intro/installation",
+  "permalink": "/docs/gwin-compiler/Intro/installation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/bit-sync/website/docs/gwin-compiler/Intro/installation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Intro into the Gwin Compiler",
+    "permalink": "/docs/gwin-compiler/Intro/"
+  },
+  "next": {
+    "title": "Gwin Compiler - Headers",
+    "permalink": "/docs/category/gwin-compiler---headers"
+  }
+}

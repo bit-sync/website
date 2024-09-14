@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Intro",
+  "description": "Discover Bit Sync",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/bit-sync/website/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Gwin Compiler",
+    "permalink": "/docs/category/gwin-compiler"
+  }
+}
