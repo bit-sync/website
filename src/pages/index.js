@@ -20,7 +20,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Bit Sync intro
           </Link>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout
       title={`Bit Sync | home`}
-      description="Description will go into a meta tag in <head />">
+      description="Bit Sync homepage">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

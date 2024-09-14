@@ -1,12 +1,11 @@
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+Extraskilled56:
+  name: Extraskilled56
+  title: Bit Sync owner & Developer
+  image_url: https://github.com/extraskilled56.png
   page: true
   socials:
-    x: yangshunz
-    github: yangshun
+    x: Extraskilled56
+    github: extraskilled56
 
 slorber:
   name: Sébastien Lorber
