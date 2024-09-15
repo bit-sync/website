@@ -1,8 +1,0 @@
-{
-  "type": "mdx",
-  "permalink": "/test",
-  "source": "@site/src/pages/test.mdx",
-  "description": "hi from bit sync",
-  "frontMatter": {},
-  "unlisted": false
-}
