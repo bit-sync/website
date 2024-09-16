@@ -9,6 +9,7 @@ Discover **Bit Sync**
 ## Open source projects
 
 - [Gwin Compiler](/docs/category/gwin-compiler)
+- [Echo kernel](/docs/echo-kernel/Intro)
 ## What we offer
 
 ### Host a website with Web Sync
