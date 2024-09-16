@@ -72,11 +72,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/software-evolved.jpg',
       navbar: {
         title: 'Bit Sync',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Bit Sync logo',
           src: 'img/logo.svg',
         },
         items: [
