@@ -7,16 +7,12 @@ Extraskilled56:
     x: Extraskilled56
     github: extraskilled56
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
+L1FE:
+  name: L1FE
+  title: Co-Owner & Developer
+  url: https://bitsyncdev.com
+  image_url: https://avatars.githubusercontent.com/u/97807171?v=4
+  page: true
   socials:
-    x: sebastienlorber
-    linkedin: sebastienlorber
-    github: slorber
-    newsletter: https://thisweekinreact.com
+    github: I4LYT
+

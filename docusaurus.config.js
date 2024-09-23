@@ -9,9 +9,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Bit Sync',
-  tagline: 'Software is cool',
+  tagline: 'Software, Evolved.',
   favicon: 'img/logo.svg',
-
+  staticDirectories: ['public', 'static'],
   // Set the production url of your site here
   url: 'https://bitsyncdev.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -71,8 +71,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'support_us',
+        content:
+          "New redesign! <a href='/blog/redesign-blog'>Blog Post</a>",
+        backgroundColor: '#333333',
+        textColor: '#F5F5F5',
+        isCloseable: false,
+      },
       // Replace with your project's social card
-      image: 'img/software-evolved.jpg',
+      image: 'img/Software-Evolved.png',
       navbar: {
         title: 'Bit Sync',
         logo: {
@@ -101,7 +109,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Intro',
                 to: '/docs/intro',
               },
             ],
