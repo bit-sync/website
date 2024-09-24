@@ -3,7 +3,11 @@ name: Deploy Docusaurus site
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch
+      - main
+
+permissions:
+  contents: write
+  actions: read
 
 jobs:
   build:
@@ -16,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
@@ -27,5 +31,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACTION_SECRET }}
           publish_dir: ./build
