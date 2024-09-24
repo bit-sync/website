@@ -44,7 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/bit-sync/website',
+            'https://github.com/bit-sync/website/blob/main',
         },
         blog: {
           showReadingTime: true,
