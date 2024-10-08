@@ -32,7 +32,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Bit Sync | home`}
+      title={` | home`}
       description="Bit Sync homepage">
       <HomepageHeader />
       <main>
