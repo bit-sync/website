@@ -32,8 +32,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={` | home`}
-      description="Bit Sync homepage">
+      title={`Home`}
+      description="Bit Sync is a software development company that also has cloud services.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
