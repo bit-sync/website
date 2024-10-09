@@ -11,7 +11,7 @@ L1FE:
   name: L1FE
   title: Co-Owner & Developer
   url: https://bitsyncdev.com
-  image_url: static/img/L1FE.png
+  image_url: /static/img/L1FE.png
   page: true
   socials:
     x: I4LYT_
