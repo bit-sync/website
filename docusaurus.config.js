@@ -55,7 +55,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/bit-sync/website',
+            'https://github.com/bit-sync/website/blob/main',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -74,8 +74,8 @@ const config = {
       announcementBar: {
         id: 'support_us',
         content:
-          "New redesign! <a href='/blog/redesign-blog'>Blog Post</a>",
-        backgroundColor: '#333333',
+          "New redisign! <a href='/blog/redesign-blog'>Blog Post</a> | <a href='https://status.bitsyncdev.com'>Status Page</a>",
+        backgroundColor: '#007BFF',
         textColor: '#F5F5F5',
         isCloseable: false,
       },
