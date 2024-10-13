@@ -11,17 +11,14 @@ const config = {
   title: 'Bit Sync',
   tagline: 'Software, Evolved.',
   favicon: 'img/logo.svg',
+  // Remove the incorrect URL that was causing the error
+  // Add staticDirectories to the known properties of Config
   staticDirectories: ['public', 'static'],
-  // Set the production url of your site here
   url: 'https://bitsyncdev.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  organizationName: 'bit-sync',
+  projectName: 'website',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'bit-sync', // Usually your GitHub org/user name.
-  projectName: 'website', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -71,14 +68,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: 'support_us',
-        content:
-          "New redisign! <a href='/blog/redesign-blog'>Blog Post</a> | <a href='https://status.bitsyncdev.com'>Status Page</a>",
-        backgroundColor: '#007BFF',
-        textColor: '#F5F5F5',
-        isCloseable: false,
-      },
       // Replace with your project's social card
       image: 'img/Software-Evolved.png',
       navbar: {
@@ -96,7 +85,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/bit-sync/website',
+            href: 'https://github.com/bit-sync/',
             label: 'GitHub',
             position: 'right',
           },
@@ -133,6 +122,10 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/bit-sync/website',
+              },
+              {
+                label: 'Status Page',
+                href: 'https://status.bitsyncdev.com',
               },
             ],
           },
