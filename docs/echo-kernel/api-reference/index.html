@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-echo-kernel/api-reference" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">API Reference | Bit Sync</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://bitsyncdev.com/img/Software-Evolved.png"><meta data-rh="true" name="twitter:image" content="https://bitsyncdev.com/img/Software-Evolved.png"><meta data-rh="true" property="og:url" content="https://bitsyncdev.com/docs/echo-kernel/api-reference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="API Reference | Bit Sync"><meta data-rh="true" name="description" content="Complete API reference for all Echo Kernel components and subsystems."><meta data-rh="true" property="og:description" content="Complete API reference for all Echo Kernel components and subsystems."><link data-rh="true" rel="icon" href="/img/logo.svg"><link data-rh="true" rel="canonical" href="https://bitsyncdev.com/docs/echo-kernel/api-reference"><link data-rh="true" rel="alternate" href="https://bitsyncdev.com/docs/echo-kernel/api-reference" hreflang="en"><link data-rh="true" rel="alternate" href="https://bitsyncdev.com/docs/echo-kernel/api-reference" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Bit Sync RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Bit Sync Atom Feed"><link rel="stylesheet" href="/assets/css/styles.22b9bfa9.css">
+<script src="/assets/js/runtime~main.30209867.js" defer="defer"></script>
+<script src="/assets/js/main.ab52faed.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Bit Sync logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Bit Sync logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Bit Sync</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/bit-sync/" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro">Intro</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/docs/category/gwin-compiler">Gwin Compiler</a><button aria-label="Expand sidebar category &#x27;Gwin Compiler&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/docs/category/echo-kernel">Echo Kernel</a><button aria-label="Collapse sidebar category &#x27;Echo Kernel&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/echo-kernel/overview">Echo Kernel Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/components">Components</a><button aria-label="Expand sidebar category &#x27;Components&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/echo-kernel/api-reference">API Reference</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/branding">Branding</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/category/echo-kernel"><span itemprop="name">Echo Kernel</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">API Reference</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>API Reference</h1></header>
+<p>Complete API reference for all Echo Kernel components and subsystems.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="table-of-contents">Table of Contents<a href="#table-of-contents" class="hash-link" aria-label="Direct link to Table of Contents" title="Direct link to Table of Contents">​</a></h2>
+<ul>
+<li><a href="#display-system">Display System</a></li>
+<li><a href="#keyboard-system">Keyboard System</a></li>
+<li><a href="#bootloader">Bootloader</a></li>
+<li><a href="#standard-library">Standard Library</a>
+<ul>
+<li><a href="#string-functions">String Functions</a></li>
+<li><a href="#memory-functions">Memory Functions</a></li>
+<li><a href="#character-functions">Character Functions</a></li>
+<li><a href="#time-functions">Time Functions</a></li>
+<li><a href="#conversion-functions">Conversion Functions</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="display-system">Display System<a href="#display-system" class="hash-link" aria-label="Direct link to Display System" title="Direct link to Display System">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="constants">Constants<a href="#constants" class="hash-link" aria-label="Direct link to Constants" title="Direct link to Constants">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">LINES</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">25</span><span class="token macro property expression" style="color:#36acaa">                    </span><span class="token macro property comment" style="color:#999988;font-style:italic">// Screen height</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">COLUMNS_IN_LINE</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">80</span><span class="token macro property expression" style="color:#36acaa">          </span><span class="token macro property comment" style="color:#999988;font-style:italic">// Screen width</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">BYTES_FOR_EACH_ELEMENT</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">2</span><span class="token macro property expression" style="color:#36acaa">    </span><span class="token macro property comment" style="color:#999988;font-style:italic">// Bytes per character</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">SCREENSIZE</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression punctuation" style="color:#393A34">(</span><span class="token macro property expression" style="color:#36acaa">BYTES_FOR_EACH_ELEMENT </span><span class="token macro property expression operator" style="color:#393A34">*</span><span class="token macro property expression" style="color:#36acaa"> COLUMNS_IN_LINE </span><span class="token macro property expression operator" style="color:#393A34">*</span><span class="token macro property expression" style="color:#36acaa"> LINES</span><span class="token macro property expression punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="color-constants">Color Constants<a href="#color-constants" class="hash-link" aria-label="Direct link to Color Constants" title="Direct link to Color Constants">​</a></h3>
+<table><thead><tr><th>Constant</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>CL_BLACK</code></td><td><code>0x00</code></td><td>Black</td></tr><tr><td><code>CL_BLUE</code></td><td><code>0x01</code></td><td>Blue</td></tr><tr><td><code>CL_GREEN</code></td><td><code>0x02</code></td><td>Green</td></tr><tr><td><code>CL_CYAN</code></td><td><code>0x03</code></td><td>Cyan</td></tr><tr><td><code>CL_RED</code></td><td><code>0x04</code></td><td>Red</td></tr><tr><td><code>CL_MAGENTA</code></td><td><code>0x05</code></td><td>Magenta</td></tr><tr><td><code>CL_BROWN</code></td><td><code>0x06</code></td><td>Brown</td></tr><tr><td><code>CL_LIGHT_GREY</code></td><td><code>0x07</code></td><td>Light Grey (Default)</td></tr><tr><td><code>CL_DARK_GREY</code></td><td><code>0x08</code></td><td>Dark Grey</td></tr><tr><td><code>CL_LIGHT_BLUE</code></td><td><code>0x09</code></td><td>Light Blue</td></tr><tr><td><code>CL_LIGHT_GREEN</code></td><td><code>0x0A</code></td><td>Light Green</td></tr><tr><td><code>CL_LIGHT_CYAN</code></td><td><code>0x0B</code></td><td>Light Cyan</td></tr><tr><td><code>CL_LIGHT_RED</code></td><td><code>0x0C</code></td><td>Light Red</td></tr><tr><td><code>CL_LIGHT_MAGENTA</code></td><td><code>0x0D</code></td><td>Light Magenta</td></tr><tr><td><code>CL_YELLOW</code></td><td><code>0x0E</code></td><td>Yellow</td></tr><tr><td><code>CL_WHITE</code></td><td><code>0x0F</code></td><td>White</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-clear_screenvoid"><code>void clear_screen(void)</code><a href="#void-clear_screenvoid" class="hash-link" aria-label="Direct link to void-clear_screenvoid" title="Direct link to void-clear_screenvoid">​</a></h4>
+<p>Clears the entire screen and resets cursor position.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-printconst-char-str"><code>void print(const char *str)</code><a href="#void-printconst-char-str" class="hash-link" aria-label="Direct link to void-printconst-char-str" title="Direct link to void-printconst-char-str">​</a></h4>
+<p>Prints a string with default color (light grey on black).</p>
+<ul>
+<li><strong>Parameters</strong>: <code>str</code> - Null-terminated string to print</li>
+<li><strong>Behavior</strong>: Handles newlines, scrolling</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-printcconst-char-str-unsigned-char-color"><code>void printc(const char *str, unsigned char color)</code><a href="#void-printcconst-char-str-unsigned-char-color" class="hash-link" aria-label="Direct link to void-printcconst-char-str-unsigned-char-color" title="Direct link to void-printcconst-char-str-unsigned-char-color">​</a></h4>
+<p>Prints a string with specified color.</p>
+<ul>
+<li><strong>Parameters</strong>:<!-- -->
+<ul>
+<li><code>str</code> - Null-terminated string to print</li>
+<li><code>color</code> - Color attribute byte</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-print_newlinevoid"><code>void print_newline(void)</code><a href="#void-print_newlinevoid" class="hash-link" aria-label="Direct link to void-print_newlinevoid" title="Direct link to void-print_newlinevoid">​</a></h4>
+<p>Moves cursor to next line, scrolls if needed.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-backspacevoid"><code>void backspace(void)</code><a href="#void-backspacevoid" class="hash-link" aria-label="Direct link to void-backspacevoid" title="Direct link to void-backspacevoid">​</a></h4>
+<p>Deletes character before cursor.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="keyboard-system">Keyboard System<a href="#keyboard-system" class="hash-link" aria-label="Direct link to Keyboard System" title="Direct link to Keyboard System">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="constants-1">Constants<a href="#constants-1" class="hash-link" aria-label="Direct link to Constants" title="Direct link to Constants">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">KEYBOARD_DATA_PORT</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">0x60</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">KEYBOARD_STATUS_PORT</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">0x64</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token macro property directive-hash" style="color:#36acaa">#</span><span class="token macro property directive keyword" style="color:#00009f">define</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property macro-name" style="color:#36acaa">MAX_INPUT_LENGTH</span><span class="token macro property" style="color:#36acaa"> </span><span class="token macro property expression number" style="color:#36acaa">256</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="functions-1">Functions<a href="#functions-1" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-idt_initvoid"><code>bool idt_init(void)</code><a href="#bool-idt_initvoid" class="hash-link" aria-label="Direct link to bool-idt_initvoid" title="Direct link to bool-idt_initvoid">​</a></h4>
+<p>Initializes Interrupt Descriptor Table.</p>
+<ul>
+<li><strong>Returns</strong>: Success status</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-kb_initvoid"><code>void kb_init(void)</code><a href="#void-kb_initvoid" class="hash-link" aria-label="Direct link to void-kb_initvoid" title="Direct link to void-kb_initvoid">​</a></h4>
+<p>Enables keyboard interrupts.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-kb_disablevoid"><code>void kb_disable(void)</code><a href="#void-kb_disablevoid" class="hash-link" aria-label="Direct link to void-kb_disablevoid" title="Direct link to void-kb_disablevoid">​</a></h4>
+<p>Disables keyboard interrupts.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-get_inputconst-char-prompt--nullptr"><code>char* get_input(const char* prompt = nullptr)</code><a href="#char-get_inputconst-char-prompt--nullptr" class="hash-link" aria-label="Direct link to char-get_inputconst-char-prompt--nullptr" title="Direct link to char-get_inputconst-char-prompt--nullptr">​</a></h4>
+<p>Gets line of input from keyboard.</p>
+<ul>
+<li><strong>Parameters</strong>: <code>prompt</code> - Optional prompt string</li>
+<li><strong>Returns</strong>: User input as null-terminated string</li>
+<li><strong>Max Length</strong>: 256 characters</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bootloader">Bootloader<a href="#bootloader" class="hash-link" aria-label="Direct link to Bootloader" title="Direct link to Bootloader">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="functions-2">Functions<a href="#functions-2" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-bootvoid"><code>void boot(void)</code><a href="#void-bootvoid" class="hash-link" aria-label="Direct link to void-bootvoid" title="Direct link to void-bootvoid">​</a></h4>
+<p>Main boot sequence function.</p>
+<ul>
+<li>Initializes IDT</li>
+<li>Sets up display</li>
+<li>Launches kernel</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="standard-library">Standard Library<a href="#standard-library" class="hash-link" aria-label="Direct link to Standard Library" title="Direct link to Standard Library">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="string-functions">String Functions<a href="#string-functions" class="hash-link" aria-label="Direct link to String Functions" title="Direct link to String Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="size_t-strlenconst-char-str"><code>size_t strlen(const char* str)</code><a href="#size_t-strlenconst-char-str" class="hash-link" aria-label="Direct link to size_t-strlenconst-char-str" title="Direct link to size_t-strlenconst-char-str">​</a></h4>
+<p>Returns string length.</p>
+<ul>
+<li><strong>Parameters</strong>: <code>str</code> - Input string</li>
+<li><strong>Returns</strong>: Number of characters before null terminator</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="int-strcmpconst-char-str1-const-char-str2"><code>int strcmp(const char* str1, const char* str2)</code><a href="#int-strcmpconst-char-str1-const-char-str2" class="hash-link" aria-label="Direct link to int-strcmpconst-char-str1-const-char-str2" title="Direct link to int-strcmpconst-char-str1-const-char-str2">​</a></h4>
+<p>Compares two strings.</p>
+<ul>
+<li><strong>Returns</strong>:<!-- -->
+<ul>
+<li><code>0</code> if equal</li>
+<li>Negative value if str1 is less than str2</li>
+<li>Positive value if str1 is greater than str2</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-strcpychar-dest-const-char-src"><code>char* strcpy(char* dest, const char* src)</code><a href="#char-strcpychar-dest-const-char-src" class="hash-link" aria-label="Direct link to char-strcpychar-dest-const-char-src" title="Direct link to char-strcpychar-dest-const-char-src">​</a></h4>
+<p>Copies string including null terminator.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to dest</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-strncpychar-dest-const-char-src-size_t-n"><code>char* strncpy(char* dest, const char* src, size_t n)</code><a href="#char-strncpychar-dest-const-char-src-size_t-n" class="hash-link" aria-label="Direct link to char-strncpychar-dest-const-char-src-size_t-n" title="Direct link to char-strncpychar-dest-const-char-src-size_t-n">​</a></h4>
+<p>Copies up to n characters.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to dest</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-strcatchar-dest-const-char-src"><code>char* strcat(char* dest, const char* src)</code><a href="#char-strcatchar-dest-const-char-src" class="hash-link" aria-label="Direct link to char-strcatchar-dest-const-char-src" title="Direct link to char-strcatchar-dest-const-char-src">​</a></h4>
+<p>Concatenates strings.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to dest</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-strncatchar-dest-const-char-src-size_t-n"><code>char* strncat(char* dest, const char* src, size_t n)</code><a href="#char-strncatchar-dest-const-char-src-size_t-n" class="hash-link" aria-label="Direct link to char-strncatchar-dest-const-char-src-size_t-n" title="Direct link to char-strncatchar-dest-const-char-src-size_t-n">​</a></h4>
+<p>Concatenates up to n characters.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to dest</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="const-char-strchrconst-char-str-int-ch"><code>const char* strchr(const char* str, int ch)</code><a href="#const-char-strchrconst-char-str-int-ch" class="hash-link" aria-label="Direct link to const-char-strchrconst-char-str-int-ch" title="Direct link to const-char-strchrconst-char-str-int-ch">​</a></h4>
+<p>Finds first occurrence of character.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to character or nullptr</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="memory-functions">Memory Functions<a href="#memory-functions" class="hash-link" aria-label="Direct link to Memory Functions" title="Direct link to Memory Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-memcpyvoid-dest-const-void-src-size_t-n"><code>void* memcpy(void* dest, const void* src, size_t n)</code><a href="#void-memcpyvoid-dest-const-void-src-size_t-n" class="hash-link" aria-label="Direct link to void-memcpyvoid-dest-const-void-src-size_t-n" title="Direct link to void-memcpyvoid-dest-const-void-src-size_t-n">​</a></h4>
+<p>Copies n bytes between memory regions.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to dest</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-memsetvoid-ptr-int-value-size_t-n"><code>void* memset(void* ptr, int value, size_t n)</code><a href="#void-memsetvoid-ptr-int-value-size_t-n" class="hash-link" aria-label="Direct link to void-memsetvoid-ptr-int-value-size_t-n" title="Direct link to void-memsetvoid-ptr-int-value-size_t-n">​</a></h4>
+<p>Fills memory with specified value.</p>
+<ul>
+<li><strong>Returns</strong>: Pointer to ptr</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="int-memcmpconst-void-ptr1-const-void-ptr2-size_t-n"><code>int memcmp(const void* ptr1, const void* ptr2, size_t n)</code><a href="#int-memcmpconst-void-ptr1-const-void-ptr2-size_t-n" class="hash-link" aria-label="Direct link to int-memcmpconst-void-ptr1-const-void-ptr2-size_t-n" title="Direct link to int-memcmpconst-void-ptr1-const-void-ptr2-size_t-n">​</a></h4>
+<p>Compares memory regions.</p>
+<ul>
+<li><strong>Returns</strong>: <code>0</code> if equal, difference otherwise</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="character-functions">Character Functions<a href="#character-functions" class="hash-link" aria-label="Direct link to Character Functions" title="Direct link to Character Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-isdigitchar-c"><code>bool isdigit(char c)</code><a href="#bool-isdigitchar-c" class="hash-link" aria-label="Direct link to bool-isdigitchar-c" title="Direct link to bool-isdigitchar-c">​</a></h4>
+<p>Checks if character is digit (0-9).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-isalphachar-c"><code>bool isalpha(char c)</code><a href="#bool-isalphachar-c" class="hash-link" aria-label="Direct link to bool-isalphachar-c" title="Direct link to bool-isalphachar-c">​</a></h4>
+<p>Checks if character is letter (a-z, A-Z).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-isalnumchar-c"><code>bool isalnum(char c)</code><a href="#bool-isalnumchar-c" class="hash-link" aria-label="Direct link to bool-isalnumchar-c" title="Direct link to bool-isalnumchar-c">​</a></h4>
+<p>Checks if character is alphanumeric.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-islowerchar-c"><code>bool islower(char c)</code><a href="#bool-islowerchar-c" class="hash-link" aria-label="Direct link to bool-islowerchar-c" title="Direct link to bool-islowerchar-c">​</a></h4>
+<p>Checks if character is lowercase.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="bool-isupperchar-c"><code>bool isupper(char c)</code><a href="#bool-isupperchar-c" class="hash-link" aria-label="Direct link to bool-isupperchar-c" title="Direct link to bool-isupperchar-c">​</a></h4>
+<p>Checks if character is uppercase.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-tolowerchar-c"><code>char tolower(char c)</code><a href="#char-tolowerchar-c" class="hash-link" aria-label="Direct link to char-tolowerchar-c" title="Direct link to char-tolowerchar-c">​</a></h4>
+<p>Converts to lowercase.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-toupperchar-c"><code>char toupper(char c)</code><a href="#char-toupperchar-c" class="hash-link" aria-label="Direct link to char-toupperchar-c" title="Direct link to char-toupperchar-c">​</a></h4>
+<p>Converts to uppercase.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="time-functions">Time Functions<a href="#time-functions" class="hash-link" aria-label="Direct link to Time Functions" title="Direct link to Time Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="void-sleepuint32_t-milliseconds"><code>void sleep(uint32_t milliseconds)</code><a href="#void-sleepuint32_t-milliseconds" class="hash-link" aria-label="Direct link to void-sleepuint32_t-milliseconds" title="Direct link to void-sleepuint32_t-milliseconds">​</a></h4>
+<p>Delays execution.</p>
+<ul>
+<li><strong>Parameters</strong>: <code>milliseconds</code> - Delay duration</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="conversion-functions">Conversion Functions<a href="#conversion-functions" class="hash-link" aria-label="Direct link to Conversion Functions" title="Direct link to Conversion Functions">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="int-atoiconst-char-str"><code>int atoi(const char* str)</code><a href="#int-atoiconst-char-str" class="hash-link" aria-label="Direct link to int-atoiconst-char-str" title="Direct link to int-atoiconst-char-str">​</a></h4>
+<p>Converts string to integer.</p>
+<ul>
+<li><strong>Parameters</strong>: <code>str</code> - Number string</li>
+<li><strong>Returns</strong>: Integer value</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="char-itoaint-value-char-str-int-base"><code>char* itoa(int value, char* str, int base)</code><a href="#char-itoaint-value-char-str-int-base" class="hash-link" aria-label="Direct link to char-itoaint-value-char-str-int-base" title="Direct link to char-itoaint-value-char-str-int-base">​</a></h4>
+<p>Converts integer to string.</p>
+<ul>
+<li><strong>Parameters</strong>:<!-- -->
+<ul>
+<li><code>value</code> - Number to convert</li>
+<li><code>str</code> - Output buffer</li>
+<li><code>base</code> - Number base (2-36)</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: Pointer to str</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="hardware-ports">Hardware Ports<a href="#hardware-ports" class="hash-link" aria-label="Direct link to Hardware Ports" title="Direct link to Hardware Ports">​</a></h2>
+<table><thead><tr><th>Port</th><th>Description</th></tr></thead><tbody><tr><td><code>0x60</code></td><td>Keyboard Data Port</td></tr><tr><td><code>0x64</code></td><td>Keyboard Status Port</td></tr><tr><td><code>0xb8000</code></td><td>Video Memory Base</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="memory-map">Memory Map<a href="#memory-map" class="hash-link" aria-label="Direct link to Memory Map" title="Direct link to Memory Map">​</a></h2>
+<table><thead><tr><th>Address</th><th>Usage</th></tr></thead><tbody><tr><td><code>0xb8000</code></td><td>Video Memory Start</td></tr><tr><td><code>0xb8000 + SCREENSIZE</code></td><td>Video Memory End</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="error-codes">Error Codes<a href="#error-codes" class="hash-link" aria-label="Direct link to Error Codes" title="Direct link to Error Codes">​</a></h2>
+<p>Most functions return one of these types:</p>
+<ul>
+<li>Boolean: <code>true</code> for success, <code>false</code> for failure</li>
+<li>Pointers: <code>nullptr</code> for failure</li>
+<li>Integers: <code>0</code> for success, non-zero for specific errors</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="usage-notes">Usage Notes<a href="#usage-notes" class="hash-link" aria-label="Direct link to Usage Notes" title="Direct link to Usage Notes">​</a></h2>
+<ol>
+<li>
+<p><strong>Display Functions</strong></p>
+<ul>
+<li>Always check screen boundaries</li>
+<li>Handle scrolling automatically</li>
+<li>Color attributes combine foreground and background (using bit shift)</li>
+</ul>
+</li>
+<li>
+<p><strong>Keyboard Functions</strong></p>
+<ul>
+<li>Initialize IDT before using keyboard</li>
+<li>Check input buffer limits</li>
+<li>Handle input termination (Enter key)</li>
+</ul>
+</li>
+<li>
+<p><strong>Memory Functions</strong></p>
+<ul>
+<li>Verify buffer sizes</li>
+<li>Check for overlap in memcpy</li>
+<li>Ensure proper alignment</li>
+</ul>
+</li>
+<li>
+<p><strong>String Functions</strong></p>
+<ul>
+<li>Ensure destination buffers are large enough</li>
+<li>Always check for null terminators</li>
+<li>Use n-variants for better safety</li>
+</ul>
+</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/bit-sync/website/blob/main/docs/echo-kernel/api-reference.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/echo-kernel/components/library"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Standard Library</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/branding"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Branding</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#table-of-contents" class="table-of-contents__link toc-highlight">Table of Contents</a></li><li><a href="#display-system" class="table-of-contents__link toc-highlight">Display System</a><ul><li><a href="#constants" class="table-of-contents__link toc-highlight">Constants</a></li><li><a href="#color-constants" class="table-of-contents__link toc-highlight">Color Constants</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a></li></ul></li><li><a href="#keyboard-system" class="table-of-contents__link toc-highlight">Keyboard System</a><ul><li><a href="#constants-1" class="table-of-contents__link toc-highlight">Constants</a></li><li><a href="#functions-1" class="table-of-contents__link toc-highlight">Functions</a></li></ul></li><li><a href="#bootloader" class="table-of-contents__link toc-highlight">Bootloader</a><ul><li><a href="#functions-2" class="table-of-contents__link toc-highlight">Functions</a></li></ul></li><li><a href="#standard-library" class="table-of-contents__link toc-highlight">Standard Library</a><ul><li><a href="#string-functions" class="table-of-contents__link toc-highlight">String Functions</a></li><li><a href="#memory-functions" class="table-of-contents__link toc-highlight">Memory Functions</a></li><li><a href="#character-functions" class="table-of-contents__link toc-highlight">Character Functions</a></li><li><a href="#time-functions" class="table-of-contents__link toc-highlight">Time Functions</a></li><li><a href="#conversion-functions" class="table-of-contents__link toc-highlight">Conversion Functions</a></li></ul></li><li><a href="#hardware-ports" class="table-of-contents__link toc-highlight">Hardware Ports</a></li><li><a href="#memory-map" class="table-of-contents__link toc-highlight">Memory Map</a></li><li><a href="#error-codes" class="table-of-contents__link toc-highlight">Error Codes</a></li><li><a href="#usage-notes" class="table-of-contents__link toc-highlight">Usage Notes</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Intro</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/bit-sync" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/bit-sync/website" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://status.bitsyncdev.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status Page<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Bit Sync, Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
