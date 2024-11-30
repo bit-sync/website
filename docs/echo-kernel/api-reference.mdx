@@ -1,0 +1,248 @@
+---
+sidebar_position: 3
+---
+
+# API Reference
+
+Complete API reference for all Echo Kernel components and subsystems.
+
+## Table of Contents
+- [Display System](#display-system)
+- [Keyboard System](#keyboard-system)
+- [Bootloader](#bootloader)
+- [Standard Library](#standard-library)
+  - [String Functions](#string-functions)
+  - [Memory Functions](#memory-functions)
+  - [Character Functions](#character-functions)
+  - [Time Functions](#time-functions)
+  - [Conversion Functions](#conversion-functions)
+
+## Display System
+
+### Constants
+
+```cpp
+#define LINES 25                    // Screen height
+#define COLUMNS_IN_LINE 80          // Screen width
+#define BYTES_FOR_EACH_ELEMENT 2    // Bytes per character
+#define SCREENSIZE (BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE * LINES)
+```
+
+### Color Constants
+
+| Constant | Value | Description |
+|----------|-------|-------------|
+| `CL_BLACK` | `0x00` | Black |
+| `CL_BLUE` | `0x01` | Blue |
+| `CL_GREEN` | `0x02` | Green |
+| `CL_CYAN` | `0x03` | Cyan |
+| `CL_RED` | `0x04` | Red |
+| `CL_MAGENTA` | `0x05` | Magenta |
+| `CL_BROWN` | `0x06` | Brown |
+| `CL_LIGHT_GREY` | `0x07` | Light Grey (Default) |
+| `CL_DARK_GREY` | `0x08` | Dark Grey |
+| `CL_LIGHT_BLUE` | `0x09` | Light Blue |
+| `CL_LIGHT_GREEN` | `0x0A` | Light Green |
+| `CL_LIGHT_CYAN` | `0x0B` | Light Cyan |
+| `CL_LIGHT_RED` | `0x0C` | Light Red |
+| `CL_LIGHT_MAGENTA` | `0x0D` | Light Magenta |
+| `CL_YELLOW` | `0x0E` | Yellow |
+| `CL_WHITE` | `0x0F` | White |
+
+### Functions
+
+#### `void clear_screen(void)`
+Clears the entire screen and resets cursor position.
+
+#### `void print(const char *str)`
+Prints a string with default color (light grey on black).
+- **Parameters**: `str` - Null-terminated string to print
+- **Behavior**: Handles newlines, scrolling
+
+#### `void printc(const char *str, unsigned char color)`
+Prints a string with specified color.
+- **Parameters**:
+  - `str` - Null-terminated string to print
+  - `color` - Color attribute byte
+
+#### `void print_newline(void)`
+Moves cursor to next line, scrolls if needed.
+
+#### `void backspace(void)`
+Deletes character before cursor.
+
+## Keyboard System
+
+### Constants
+
+```cpp
+#define KEYBOARD_DATA_PORT 0x60
+#define KEYBOARD_STATUS_PORT 0x64
+#define MAX_INPUT_LENGTH 256
+```
+
+### Functions
+
+#### `bool idt_init(void)`
+Initializes Interrupt Descriptor Table.
+- **Returns**: Success status
+
+#### `void kb_init(void)`
+Enables keyboard interrupts.
+
+#### `void kb_disable(void)`
+Disables keyboard interrupts.
+
+#### `char* get_input(const char* prompt = nullptr)`
+Gets line of input from keyboard.
+- **Parameters**: `prompt` - Optional prompt string
+- **Returns**: User input as null-terminated string
+- **Max Length**: 256 characters
+
+## Bootloader
+
+### Functions
+
+#### `void boot(void)`
+Main boot sequence function.
+- Initializes IDT
+- Sets up display
+- Launches kernel
+
+## Standard Library
+
+### String Functions
+
+#### `size_t strlen(const char* str)`
+Returns string length.
+- **Parameters**: `str` - Input string
+- **Returns**: Number of characters before null terminator
+
+#### `int strcmp(const char* str1, const char* str2)`
+Compares two strings.
+- **Returns**: 
+  - `0` if equal
+  - Negative value if str1 is less than str2
+  - Positive value if str1 is greater than str2
+
+#### `char* strcpy(char* dest, const char* src)`
+Copies string including null terminator.
+- **Returns**: Pointer to dest
+
+#### `char* strncpy(char* dest, const char* src, size_t n)`
+Copies up to n characters.
+- **Returns**: Pointer to dest
+
+#### `char* strcat(char* dest, const char* src)`
+Concatenates strings.
+- **Returns**: Pointer to dest
+
+#### `char* strncat(char* dest, const char* src, size_t n)`
+Concatenates up to n characters.
+- **Returns**: Pointer to dest
+
+#### `const char* strchr(const char* str, int ch)`
+Finds first occurrence of character.
+- **Returns**: Pointer to character or nullptr
+
+### Memory Functions
+
+#### `void* memcpy(void* dest, const void* src, size_t n)`
+Copies n bytes between memory regions.
+- **Returns**: Pointer to dest
+
+#### `void* memset(void* ptr, int value, size_t n)`
+Fills memory with specified value.
+- **Returns**: Pointer to ptr
+
+#### `int memcmp(const void* ptr1, const void* ptr2, size_t n)`
+Compares memory regions.
+- **Returns**: `0` if equal, difference otherwise
+
+### Character Functions
+
+#### `bool isdigit(char c)`
+Checks if character is digit (0-9).
+
+#### `bool isalpha(char c)`
+Checks if character is letter (a-z, A-Z).
+
+#### `bool isalnum(char c)`
+Checks if character is alphanumeric.
+
+#### `bool islower(char c)`
+Checks if character is lowercase.
+
+#### `bool isupper(char c)`
+Checks if character is uppercase.
+
+#### `char tolower(char c)`
+Converts to lowercase.
+
+#### `char toupper(char c)`
+Converts to uppercase.
+
+### Time Functions
+
+#### `void sleep(uint32_t milliseconds)`
+Delays execution.
+- **Parameters**: `milliseconds` - Delay duration
+
+### Conversion Functions
+
+#### `int atoi(const char* str)`
+Converts string to integer.
+- **Parameters**: `str` - Number string
+- **Returns**: Integer value
+
+#### `char* itoa(int value, char* str, int base)`
+Converts integer to string.
+- **Parameters**:
+  - `value` - Number to convert
+  - `str` - Output buffer
+  - `base` - Number base (2-36)
+- **Returns**: Pointer to str
+
+## Hardware Ports
+
+| Port | Description |
+|------|-------------|
+| `0x60` | Keyboard Data Port |
+| `0x64` | Keyboard Status Port |
+| `0xb8000` | Video Memory Base |
+
+## Memory Map
+
+| Address | Usage |
+|---------|-------|
+| `0xb8000` | Video Memory Start |
+| `0xb8000 + SCREENSIZE` | Video Memory End |
+
+## Error Codes
+
+Most functions return one of these types:
+- Boolean: `true` for success, `false` for failure
+- Pointers: `nullptr` for failure
+- Integers: `0` for success, non-zero for specific errors
+
+## Usage Notes
+
+1. **Display Functions**
+   - Always check screen boundaries
+   - Handle scrolling automatically
+   - Color attributes combine foreground and background (using bit shift)
+
+2. **Keyboard Functions**
+   - Initialize IDT before using keyboard
+   - Check input buffer limits
+   - Handle input termination (Enter key)
+
+3. **Memory Functions**
+   - Verify buffer sizes
+   - Check for overlap in memcpy
+   - Ensure proper alignment
+
+4. **String Functions**
+   - Ensure destination buffers are large enough
+   - Always check for null terminators
+   - Use n-variants for better safety

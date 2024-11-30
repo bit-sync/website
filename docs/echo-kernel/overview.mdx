@@ -1,0 +1,97 @@
+---
+sidebar_position: 1
+---
+
+# Echo Kernel Overview
+
+Echo Kernel is a minimalist operating system kernel designed for educational purposes and system programming learning. It provides basic functionality for hardware interaction, input/output operations, and system management.
+
+## Core Components
+
+The kernel is organized into several key components:
+
+### System Layer (`sys/`)
+- **Display System**: Text-mode display management
+- **Keyboard System**: Keyboard input handling and interrupt management
+
+### Boot Process (`bootloader/`)
+- **Boot Sequence**: System initialization and kernel launch
+- **IDT Setup**: Interrupt Descriptor Table configuration
+
+### Standard Library (`lib/`)
+- **String Operations**: String manipulation functions
+- **Memory Operations**: Memory management utilities
+- **Character Functions**: Character type checking and conversion
+- **Time Functions**: Basic timing operations
+
+### Kernel Core (`kernel/`)
+- **Main Loop**: System main loop and process management
+- **System Control**: Core kernel functionality
+
+## Key Features
+
+1. **Hardware Interaction**
+   - Direct video memory manipulation
+   - Interrupt-based keyboard input
+   - Hardware port I/O
+
+2. **Input/Output**
+   - Text display with color support
+   - Keyboard input buffering
+   - Basic console functionality
+
+3. **System Utilities**
+   - Standard library functions
+   - Memory manipulation
+   - String handling
+   - Time management
+
+## Architecture
+
+The Echo Kernel follows a modular architecture:
+
+```
+Echo Kernel
+├── bootloader/     # System initialization
+├── sys/           # Hardware interfaces
+│   ├── display    # Screen output
+│   └── keyboard   # Input handling
+├── lib/           # Standard library
+└── kernel/        # Core kernel code
+```
+
+## Getting Started
+
+To work with Echo Kernel, you'll need to understand:
+
+1. **Basic Concepts**
+   - x86 architecture
+   - Interrupt handling
+   - Memory management
+   - I/O operations
+
+2. **Development Environment**
+   - C++ compiler
+   - Assembly knowledge
+   - Hardware emulation (optional)
+
+## Documentation Structure
+
+This documentation is organized into several sections:
+
+1. **System Components**
+   - Detailed documentation of each system module
+   - API references
+   - Implementation details
+
+2. **Development Guide**
+   - Setup instructions
+   - Development workflows
+   - Debugging techniques
+
+3. **Reference**
+   - Function documentation
+   - Hardware specifications
+   - System constants
+
+Navigate through the sidebar to explore detailed documentation for each component.

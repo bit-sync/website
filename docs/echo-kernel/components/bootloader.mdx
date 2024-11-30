@@ -1,0 +1,150 @@
+---
+sidebar_position: 3
+---
+
+# Bootloader
+
+The Echo Kernel bootloader is responsible for initializing essential system components and transitioning from the boot process to the kernel's execution. It serves as the critical bridge between hardware initialization and the kernel's main execution phase.
+
+## Features
+
+- System component initialization
+- Interrupt handling setup
+- Display system initialization
+- Kernel launch sequence
+
+## Boot Process
+
+### 1. Early Initialization
+```cpp
+void boot(void)
+```
+The main boot function performs the following sequence:
+
+1. **IDT Initialization**
+   - Calls `keyboard::idt_init()`
+   - Sets up interrupt handling infrastructure
+   - Configures keyboard interrupt handler
+
+2. **Display Setup**
+   - Initializes video memory
+   - Clears the screen
+   - Prepares display for kernel output
+
+3. **Kernel Launch**
+   - Transfers control to kernel main function
+   - Initiates system main loop
+
+## Implementation Details
+
+### Component Initialization
+
+The bootloader ensures proper initialization of core system components:
+
+1. **Interrupt System**
+   - Configures Interrupt Descriptor Table (IDT)
+   - Sets up keyboard interrupt handler
+   - Enables necessary interrupt lines
+
+2. **Display System**
+   - Configures video memory access
+   - Sets up text mode display
+   - Prepares screen for output
+
+3. **Kernel Handoff**
+   - Prepares environment for kernel execution
+   - Transfers control to kernel main function
+
+### Error Handling
+
+The bootloader implements basic error detection:
+
+- Checks IDT initialization success
+- Verifies display system availability
+- Reports critical errors before halting
+
+## Dependencies
+
+The bootloader relies on several system components:
+
+- `display` namespace for screen output
+- `keyboard` namespace for input handling and IDT setup
+- `kernel` namespace for main kernel functionality
+
+## Usage
+
+The bootloader is typically invoked by the system's initial boot code:
+
+```cpp
+bootloader::boot();
+```
+
+## System Requirements
+
+### Hardware
+- x86 compatible processor
+- Standard keyboard controller
+- VGA-compatible display adapter
+
+### Memory
+- Minimum memory requirements determined by kernel
+- Video memory at 0xb8000
+- IDT space requirements
+
+## Limitations
+
+Current implementation has several limitations:
+
+1. **Boot Options**
+   - No configuration parameters
+   - Single boot path only
+   - No alternative boot modes
+
+2. **Hardware Support**
+   - Basic hardware initialization only
+   - Limited device support
+   - No advanced boot features
+
+3. **Error Recovery**
+   - Basic error detection only
+   - No recovery mechanisms
+   - Halts on critical errors
+
+## Future Enhancements
+
+Potential areas for improvement:
+
+1. **Configuration**
+   - Boot parameters support
+   - Multiple boot modes
+   - Configuration file support
+
+2. **Hardware Support**
+   - Additional device initialization
+   - Extended hardware detection
+   - More robust error handling
+
+3. **Boot Features**
+   - Memory management initialization
+   - Advanced boot options
+   - Recovery mechanisms
+
+## Technical Notes
+
+### Memory Layout
+The bootloader assumes a specific memory layout:
+- IDT location
+- Video memory at 0xb8000
+- Kernel load address
+
+### Hardware Interaction
+Direct hardware interaction through:
+- I/O ports
+- Memory-mapped I/O
+- Interrupt vectors
+
+### Control Flow
+1. BIOS → Bootloader
+2. Bootloader initialization
+3. System component setup
+4. Kernel handoff

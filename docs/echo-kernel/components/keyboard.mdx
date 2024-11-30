@@ -1,0 +1,138 @@
+---
+sidebar_position: 2
+---
+
+# Keyboard System
+
+The keyboard system manages keyboard input through interrupt handling and provides a high-level interface for getting user input. It handles raw keyboard events, scancode translation, and input buffering.
+
+## Features
+
+- Interrupt-based keyboard handling
+- US QWERTY keyboard mapping
+- Input buffering with backspace support
+- Python-style `input()` functionality
+- Configurable input buffer size
+
+## Hardware Interface
+
+The keyboard controller interfaces with:
+- Keyboard Data Port: `0x60`
+- Keyboard Status Port: `0x64`
+- Interrupt Request Line: IRQ1
+
+## API Reference
+
+### Initialization
+
+#### `bool idt_init(void)`
+Initializes the Interrupt Descriptor Table (IDT) for keyboard handling.
+
+**Features:**
+- Sets up keyboard interrupt handler (IRQ1)
+- Configures the Programmable Interrupt Controller (PIC)
+- Returns `true` when initialization is successful
+
+#### `void kb_init(void)`
+Enables keyboard interrupts.
+
+**Features:**
+- Enables IRQ1 (keyboard interrupt)
+- Should be called after `idt_init()`
+
+### Input Functions
+
+#### `char* get_input(const char* prompt = nullptr)`
+Gets a line of input from the keyboard, similar to Python's `input()` function.
+
+**Parameters:**
+- `prompt`: Optional string to display before getting input
+
+**Features:**
+- Blocks until Enter key is pressed
+- Supports backspace for editing
+- Input is limited to `MAX_INPUT_LENGTH` characters (256 by default)
+- Returns null-terminated string containing the user's input
+
+### Control Functions
+
+#### `void kb_disable(void)`
+Disables keyboard interrupts.
+
+**Features:**
+- Disables all interrupts on the primary PIC
+- Useful for system shutdown or when keyboard input needs to be temporarily disabled
+
+## Implementation Details
+
+### Keyboard Map
+The system uses a US QWERTY keyboard map that translates scan codes to ASCII characters:
+- Letters (a-z)
+- Numbers (0-9)
+- Special characters (-, =, [, ], etc.)
+- Control keys (backspace, tab, enter)
+
+### Interrupt Handling
+1. **IDT Configuration**
+   - Uses IDT entry 0x21 for keyboard interrupt
+   - Sets up interrupt gate with proper privileges
+
+2. **PIC Configuration**
+   - Programs the 8259 PIC
+   - Enables only keyboard interrupts (IRQ1)
+   - Handles interrupt acknowledgment
+
+3. **Input Processing**
+   - Reads scan code from keyboard port
+   - Translates scan code to ASCII
+   - Handles special keys
+   - Updates input buffer
+
+### Input Buffer
+- Static buffer with 256-character capacity
+- Maintains current position and input state
+- Handles backspace by moving position backward
+- Automatically null-terminates strings
+
+## Usage Examples
+
+```cpp
+// Initialize keyboard system
+if (!keyboard::idt_init()) {
+    display::print("Keyboard initialization failed\n");
+    return;
+}
+
+// Get input with a prompt
+char* name = keyboard::get_input("Enter your name: ");
+
+// Get input without a prompt
+char* command = keyboard::get_input();
+
+// Disable keyboard when done
+keyboard::kb_disable();
+```
+
+## Limitations
+
+- US QWERTY layout only
+- No support for:
+  - Function keys (F1-F12)
+  - Modifier keys (Shift, Ctrl, Alt)
+  - Special keys (Insert, Delete, etc.)
+- Fixed input buffer size (256 characters)
+- Blocking input only (no non-blocking mode)
+
+## Error Handling
+
+The keyboard system includes basic error handling:
+- Initialization failure detection
+- Buffer overflow prevention
+- Invalid scan code filtering
+- Basic input validation
+
+## Hardware Requirements
+
+- Standard PS/2 keyboard controller
+- Intel 8259 PIC
+- x86 processor with interrupt support

@@ -1,0 +1,221 @@
+---
+sidebar_position: 4
+---
+
+# Standard Library
+
+The Echo Kernel standard library (`lib` namespace) provides essential utility functions for string manipulation, memory operations, character handling, and time management. It implements common functionality typically found in standard C libraries, adapted specifically for the kernel environment.
+
+## Categories
+
+### Time Functions
+### String Operations
+### Memory Management
+### Character Handling
+### Conversion Utilities
+
+## API Reference
+
+### Time Functions
+
+#### `void sleep(uint32_t milliseconds)`
+Implements a delay function using CPU cycle counting.
+
+**Features:**
+- Uses RDTSC (Read Time-Stamp Counter)
+- Assumes ~2GHz CPU frequency
+- Millisecond precision
+- CPU-friendly implementation
+
+### String Functions
+
+#### `size_t strlen(const char* str)`
+Returns the length of a null-terminated string.
+
+#### `int strcmp(const char* str1, const char* str2)`
+Compares two strings lexicographically.
+- Returns 0 if equal
+- Negative if str1 < str2
+- Positive if str1 > str2
+
+#### `char* strcpy(char* dest, const char* src)`
+Copies string from src to dest.
+- Includes null terminator
+- Returns original dest pointer
+
+#### `char* strncpy(char* dest, const char* src, size_t n)`
+Copies up to n characters.
+- Pads with nulls if needed
+- No null-termination if src > n
+
+#### `char* strcat(char* dest, const char* src)`
+Concatenates strings.
+- Appends src to dest
+- Returns original dest pointer
+
+#### `char* strncat(char* dest, const char* src, size_t n)`
+Concatenates n characters.
+- Null-terminates result
+- Returns original dest pointer
+
+#### `const char* strchr(const char* str, int ch)`
+Finds character in string.
+- Returns pointer to character
+- Returns nullptr if not found
+
+### Memory Functions
+
+#### `void* memcpy(void* dest, const void* src, size_t n)`
+Copies memory regions.
+- Handles overlap correctly
+- Copies n bytes
+- Returns dest pointer
+
+#### `void* memset(void* ptr, int value, size_t n)`
+Fills memory with value.
+- Sets n bytes to value
+- Returns ptr
+
+#### `int memcmp(const void* ptr1, const void* ptr2, size_t n)`
+Compares memory regions.
+- Returns 0 if identical
+- Returns difference otherwise
+
+### Conversion Functions
+
+#### `int atoi(const char* str)`
+Converts string to integer.
+**Features:**
+- Handles negative numbers
+- Skips whitespace
+- Stops at non-digits
+
+#### `char* itoa(int value, char* str, int base)`
+Converts integer to string.
+**Features:**
+- Supports bases 2-36
+- Handles negative numbers
+- Returns result string
+
+### Character Functions
+
+#### `bool isdigit(char c)`
+Checks for decimal digit.
+
+#### `bool isalpha(char c)`
+Checks for alphabetic character.
+
+#### `bool isalnum(char c)`
+Checks for alphanumeric character.
+
+#### `bool islower(char c)`
+Checks for lowercase letter.
+
+#### `bool isupper(char c)`
+Checks for uppercase letter.
+
+#### `char tolower(char c)`
+Converts to lowercase.
+
+#### `char toupper(char c)`
+Converts to uppercase.
+
+## Implementation Details
+
+### Memory Safety
+- No dynamic allocation
+- Boundary checking
+- Null pointer handling
+
+### Performance
+- Optimized implementations
+- Minimal CPU usage
+- Direct memory access
+
+### Error Handling
+- Input validation
+- Safe string operations
+- Overflow prevention
+
+## Usage Examples
+
+### String Manipulation
+```cpp
+char buffer[100];
+lib::strcpy(buffer, "Hello");
+lib::strcat(buffer, " World");
+size_t length = lib::strlen(buffer);
+```
+
+### Memory Operations
+```cpp
+char source[10] = "Test";
+char dest[10];
+lib::memcpy(dest, source, 5);
+lib::memset(dest, 0, 10);
+```
+
+### Number Conversion
+```cpp
+int number = lib::atoi("123");
+char str[20];
+lib::itoa(number, str, 10);
+```
+
+### Character Processing
+```cpp
+char c = 'A';
+if (lib::isalpha(c)) {
+    c = lib::tolower(c);
+}
+```
+
+### Timing
+```cpp
+// Wait for 1 second
+lib::sleep(1000);
+```
+
+## Limitations
+
+1. **Functionality**
+   - No floating-point support
+   - Limited error handling
+   - No locale support
+
+2. **Memory**
+   - No dynamic allocation
+   - Fixed buffer sizes
+   - No memory protection
+
+3. **Time**
+   - Simple sleep implementation
+   - Fixed CPU frequency assumption
+   - No high-precision timing
+
+4. **Thread Safety**
+   - No synchronization
+   - Not thread-safe
+   - No atomic operations
+
+## Best Practices
+
+1. **String Operations**
+   - Always check buffer sizes
+   - Use strncpy over strcpy
+   - Ensure null termination
+
+2. **Memory Operations**
+   - Verify memory boundaries
+   - Check for overlap
+   - Use appropriate buffer sizes
+
+3. **Error Handling**
+   - Check return values
+   - Validate input parameters
+   - Handle edge cases
+
+4. **Performance**
+   - Use appropriate functions
+   - Avoid unnecessary copies
+   - Consider buffer sizes
