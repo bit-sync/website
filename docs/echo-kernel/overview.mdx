@@ -4,60 +4,117 @@ sidebar_position: 1
 
 # Echo Kernel Overview
 
-Echo Kernel is a minimalist operating system kernel designed for educational purposes and system programming learning. It provides basic functionality for hardware interaction, input/output operations, and system management.
+The Echo Kernel is a minimalist, educational operating system kernel designed to demonstrate core OS concepts. The kernel focuses on simplicity and readability while providing essential functionality.
 
-## Core Components
+## Core Features
 
-The kernel is organized into several key components:
-
-### System Layer (`sys/`)
-- **Display System**: Text-mode display management
-- **Keyboard System**: Keyboard input handling and interrupt management
-
-### Boot Process (`bootloader/`)
-- **Boot Sequence**: System initialization and kernel launch
-- **IDT Setup**: Interrupt Descriptor Table configuration
-
-### Standard Library (`lib/`)
-- **String Operations**: String manipulation functions
-- **Memory Operations**: Memory management utilities
-- **Character Functions**: Character type checking and conversion
-- **Time Functions**: Basic timing operations
-
-### Kernel Core (`kernel/`)
-- **Main Loop**: System main loop and process management
-- **System Control**: Core kernel functionality
-
-## Key Features
-
-1. **Hardware Interaction**
-   - Direct video memory manipulation
-   - Interrupt-based keyboard input
-   - Hardware port I/O
-
-2. **Input/Output**
-   - Text display with color support
-   - Keyboard input buffering
-   - Basic console functionality
-
-3. **System Utilities**
-   - Standard library functions
-   - Memory manipulation
-   - String handling
-   - Time management
+- **Minimalist Design**: Streamlined architecture focusing on essential kernel operations
+- **Basic Shell Interface**: Simple command-line interface (Eshell) for user interaction
+- **Hardware I/O**: Direct hardware interaction through port I/O operations
+- **Memory Management**: Basic memory operations and management
+- **Display and Keyboard Support**: Fundamental I/O device drivers
 
 ## Architecture
 
-The Echo Kernel follows a modular architecture:
+The Echo Kernel is built with a minimalist architecture that prioritizes simplicity and educational value. The system is organized into several key components:
+
+### Core Components
+
+- **Kernel Core**: Main kernel loop and system initialization
+- **Shell (Eshell)**: Command-line interface for user interaction
+- **Hardware I/O**: Port-based hardware communication
+- **Memory Management**: Basic memory operations
+- **Device Drivers**: Display and keyboard support
+
+### System Organization
 
 ```
-Echo Kernel
-├── bootloader/     # System initialization
-├── sys/           # Hardware interfaces
-│   ├── display    # Screen output
-│   └── keyboard   # Input handling
-├── lib/           # Standard library
-└── kernel/        # Core kernel code
+src/
+├── bootloader/     # System bootloader
+├── drivers/        # Hardware drivers
+├── kernel/         # Core kernel code
+├── sys/           # System components
+└── lib/           # Utility functions
+```
+
+## Hardware Interaction
+
+The kernel interacts with hardware through port I/O operations, providing:
+
+- ACPI power management
+- Keyboard controller interface
+- Display output
+- Basic hardware status checks
+
+## Shell Interface
+
+Eshell provides a simple command-line interface with basic commands:
+
+- `clear`: Clear the screen
+- `help`: Display available commands
+- `shutdown`: Safely power off the system
+
+## Memory Management
+
+Basic memory management providing:
+
+- Memory allocation
+- Memory operations (copy, set, etc.)
+- Simple memory safety checks
+
+## Building and Running
+
+The kernel can be built using the provided Makefile:
+
+```bash
+make build
+```
+
+Run the kernel using QEMU:
+
+```bash
+make run
+```
+
+## Recent Changes
+
+The kernel has been significantly simplified in version 0.2.0:
+
+- Removed complex process management
+- Streamlined core functionality
+- Enhanced shutdown mechanism with multiple methods
+- Improved hardware interaction through port I/O
+
+## Future Development
+
+Planned improvements include:
+
+- Enhanced error handling
+- Additional shell commands
+- Improved system initialization
+- Better debugging capabilities
+
+## System Requirements
+
+- x86 compatible processor
+- At least 32MB RAM
+- VGA-compatible display
+- PS/2 keyboard
+- ACPI or APM support (for shutdown functionality)
+
+## Project Structure
+
+```
+Echo-kernel/
+├── src/
+│   ├── bootloader/    # Boot sequence implementation
+│   ├── kernel/        # Core kernel code
+│   ├── sys/          # System interfaces
+│   │   ├── display/  # Screen output
+│   │   └── keyboard/ # Input handling
+│   └── lib/          # Standard library
+├── docs/             # Documentation
+└── grub-config/      # GRUB bootloader configuration
 ```
 
 ## Getting Started

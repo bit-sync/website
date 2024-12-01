@@ -1,0 +1,97 @@
+# Port I/O System
+
+The Echo Kernel implements a robust port I/O system for direct hardware communication. This system provides low-level access to hardware ports while maintaining type safety and code clarity.
+
+## Overview
+
+The port I/O system is implemented in `src/sys/ports.h` and provides inline assembly functions for reading from and writing to hardware ports. The system supports both 8-bit and 16-bit operations.
+
+## Port I/O Functions
+
+### Output Operations
+
+```cpp
+static inline void outb(uint16_t port, uint8_t value)
+```
+Writes an 8-bit value to the specified port.
+
+```cpp
+static inline void outw(uint16_t port, uint16_t value)
+```
+Writes a 16-bit value to the specified port.
+
+### Input Operations
+
+```cpp
+static inline uint8_t inb(uint16_t port)
+```
+Reads an 8-bit value from the specified port.
+
+```cpp
+static inline uint16_t inw(uint16_t port)
+```
+Reads a 16-bit value from the specified port.
+
+## Hardware Port Constants
+
+The system defines several important port addresses as constants:
+
+```cpp
+static constexpr uint16_t QEMU_SHUTDOWN_PORT = 0xB004;  // QEMU-specific ACPI shutdown
+static constexpr uint16_t APM_SHUTDOWN_PORT = 0x604;    // APM power management
+static constexpr uint16_t ACPI_SHUTDOWN_PORT = 0x4004;  // Standard ACPI
+static constexpr uint16_t KBC_RESET_PORT = 0x64;        // Keyboard controller
+```
+
+## Usage Examples
+
+### System Shutdown
+
+The kernel implements a robust shutdown mechanism that tries multiple methods:
+
+```cpp
+// Try QEMU ACPI shutdown
+outw(QEMU_SHUTDOWN_PORT, 0x2000);
+
+// Try APM shutdown
+outw(APM_SHUTDOWN_PORT, 0x2000);
+
+// Try standard ACPI shutdown
+outw(ACPI_SHUTDOWN_PORT, 0x3400);
+
+// Try keyboard controller reset
+outb(KBC_RESET_PORT, 0xFE);
+```
+
+## Implementation Details
+
+The port I/O functions are implemented using inline assembly for direct hardware access:
+
+```cpp
+static inline void outb(uint16_t port, uint8_t value) {
+    asm volatile("outb %0, %1" : : "a"(value), "Nd"(port));
+}
+
+static inline uint8_t inb(uint16_t port) {
+    uint8_t ret;
+    asm volatile("inb %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+```
+
+### Assembly Constraints
+
+- `"a"`: Uses the AL/AX/EAX register for the value
+- `"Nd"`: Uses an immediate value or DX register for the port
+- `volatile`: Prevents the compiler from reordering the instruction
+
+## Best Practices
+
+1. Always use the defined constants for port addresses
+2. Check hardware documentation for correct port values
+3. Handle potential hardware failures gracefully
+4. Use the appropriate bit width for port operations
+
+## Safety Considerations
+
+Port I/O operations are privileged instructions that can only be executed in kernel mode. Incorrect port operations can cause system instability or hardware damage. Always verify port addresses and values against hardware documentation.

@@ -7,8 +7,11 @@ sidebar_position: 3
 Complete API reference for all Echo Kernel components and subsystems.
 
 ## Table of Contents
+- [Kernel Core](#kernel-core)
+- [Hardware I/O](#hardware-io)
 - [Display System](#display-system)
 - [Keyboard System](#keyboard-system)
+- [Library Functions](#library-functions)
 - [Bootloader](#bootloader)
 - [Standard Library](#standard-library)
   - [String Functions](#string-functions)
@@ -17,87 +20,227 @@ Complete API reference for all Echo Kernel components and subsystems.
   - [Time Functions](#time-functions)
   - [Conversion Functions](#conversion-functions)
 
-## Display System
+## Kernel Core
 
-### Constants
+### Namespace: `kernel`
+
+Core kernel functionality and system control.
+
+#### Functions
 
 ```cpp
-#define LINES 25                    // Screen height
-#define COLUMNS_IN_LINE 80          // Screen width
-#define BYTES_FOR_EACH_ELEMENT 2    // Bytes per character
-#define SCREENSIZE (BYTES_FOR_EACH_ELEMENT * COLUMNS_IN_LINE * LINES)
+void main(void)
+```
+Kernel entry point. Initializes system and starts the shell.
+
+```cpp
+void shutdown(void)
+```
+Safely shuts down the system using multiple methods:
+1. QEMU ACPI shutdown
+2. APM shutdown
+3. Standard ACPI shutdown
+4. Keyboard controller reset
+5. CPU halt as fallback
+
+```cpp
+void sleep(int ms)
+```
+Delays execution for specified milliseconds using CPU busy-wait.
+- **Parameters:**
+  - `ms`: Milliseconds to sleep
+
+### Namespace: `kernel::eshell`
+
+Shell interface implementation.
+
+#### Functions
+
+```cpp
+void start_eshell(void)
+```
+Initializes and starts the shell interface.
+
+```cpp
+void loop(void)
+```
+Main shell loop that processes user input and executes commands.
+
+## Hardware I/O
+
+### Namespace: `ports`
+
+Port-based hardware I/O operations.
+
+#### Constants
+
+```cpp
+static constexpr uint16_t QEMU_SHUTDOWN_PORT = 0xB004
+```
+QEMU-specific ACPI shutdown port.
+
+```cpp
+static constexpr uint16_t APM_SHUTDOWN_PORT = 0x604
+```
+Advanced Power Management port.
+
+```cpp
+static constexpr uint16_t ACPI_SHUTDOWN_PORT = 0x4004
+```
+Standard ACPI shutdown port.
+
+```cpp
+static constexpr uint16_t KBC_RESET_PORT = 0x64
+```
+Keyboard controller reset port.
+
+#### Functions
+
+```cpp
+static inline void outb(uint16_t port, uint8_t value)
+```
+Writes an 8-bit value to a port.
+- **Parameters:**
+  - `port`: Port address
+  - `value`: 8-bit value to write
+
+```cpp
+static inline uint8_t inb(uint16_t port)
+```
+Reads an 8-bit value from a port.
+- **Parameters:**
+  - `port`: Port address
+- **Returns:** Value read from port
+
+```cpp
+static inline void outw(uint16_t port, uint16_t value)
+```
+Writes a 16-bit value to a port.
+- **Parameters:**
+  - `port`: Port address
+  - `value`: 16-bit value to write
+
+```cpp
+static inline uint16_t inw(uint16_t port)
+```
+Reads a 16-bit value from a port.
+- **Parameters:**
+  - `port`: Port address
+- **Returns:** Value read from port
+
+## Display System
+
+### Namespace: `display`
+
+Screen output and text display functionality.
+
+#### Constants
+
+```cpp
+// Color Constants
+const uint8_t CL_BLACK = 0
+const uint8_t CL_BLUE = 1
+const uint8_t CL_GREEN = 2
+const uint8_t CL_CYAN = 3
+const uint8_t CL_RED = 4
+const uint8_t CL_MAGENTA = 5
+const uint8_t CL_BROWN = 6
+const uint8_t CL_LIGHT_GREY = 7
+const uint8_t CL_DARK_GREY = 8
+const uint8_t CL_LIGHT_BLUE = 9
+const uint8_t CL_LIGHT_GREEN = 10
+const uint8_t CL_LIGHT_CYAN = 11
+const uint8_t CL_LIGHT_RED = 12
+const uint8_t CL_LIGHT_MAGENTA = 13
+const uint8_t CL_LIGHT_BROWN = 14
+const uint8_t CL_WHITE = 15
 ```
 
-### Color Constants
+#### Functions
 
-| Constant | Value | Description |
-|----------|-------|-------------|
-| `CL_BLACK` | `0x00` | Black |
-| `CL_BLUE` | `0x01` | Blue |
-| `CL_GREEN` | `0x02` | Green |
-| `CL_CYAN` | `0x03` | Cyan |
-| `CL_RED` | `0x04` | Red |
-| `CL_MAGENTA` | `0x05` | Magenta |
-| `CL_BROWN` | `0x06` | Brown |
-| `CL_LIGHT_GREY` | `0x07` | Light Grey (Default) |
-| `CL_DARK_GREY` | `0x08` | Dark Grey |
-| `CL_LIGHT_BLUE` | `0x09` | Light Blue |
-| `CL_LIGHT_GREEN` | `0x0A` | Light Green |
-| `CL_LIGHT_CYAN` | `0x0B` | Light Cyan |
-| `CL_LIGHT_RED` | `0x0C` | Light Red |
-| `CL_LIGHT_MAGENTA` | `0x0D` | Light Magenta |
-| `CL_YELLOW` | `0x0E` | Yellow |
-| `CL_WHITE` | `0x0F` | White |
+```cpp
+void clear_screen(void)
+```
+Clears the screen and resets cursor position.
 
-### Functions
+```cpp
+void print(const char* str)
+```
+Prints a string to the screen.
+- **Parameters:**
+  - `str`: String to print
 
-#### `void clear_screen(void)`
-Clears the entire screen and resets cursor position.
+```cpp
+void printc(const char* str, uint8_t color)
+```
+Prints a colored string to the screen.
+- **Parameters:**
+  - `str`: String to print
+  - `color`: Color value from constants
 
-#### `void print(const char *str)`
-Prints a string with default color (light grey on black).
-- **Parameters**: `str` - Null-terminated string to print
-- **Behavior**: Handles newlines, scrolling
-
-#### `void printc(const char *str, unsigned char color)`
-Prints a string with specified color.
-- **Parameters**:
-  - `str` - Null-terminated string to print
-  - `color` - Color attribute byte
-
-#### `void print_newline(void)`
-Moves cursor to next line, scrolls if needed.
-
-#### `void backspace(void)`
-Deletes character before cursor.
+```cpp
+void print_newline(void)
+```
+Moves cursor to the next line.
 
 ## Keyboard System
 
-### Constants
+### Namespace: `keyboard`
+
+Keyboard input handling.
+
+#### Functions
 
 ```cpp
-#define KEYBOARD_DATA_PORT 0x60
-#define KEYBOARD_STATUS_PORT 0x64
-#define MAX_INPUT_LENGTH 256
+char* get_input(const char* prefix)
 ```
+Gets a line of input from the keyboard.
+- **Parameters:**
+  - `prefix`: String to display before input
+- **Returns:** Input string
 
-### Functions
+## Library Functions
 
-#### `bool idt_init(void)`
-Initializes Interrupt Descriptor Table.
-- **Returns**: Success status
+### Namespace: `lib`
 
-#### `void kb_init(void)`
-Enables keyboard interrupts.
+Common utility functions.
 
-#### `void kb_disable(void)`
-Disables keyboard interrupts.
+#### Functions
 
-#### `char* get_input(const char* prompt = nullptr)`
-Gets line of input from keyboard.
-- **Parameters**: `prompt` - Optional prompt string
-- **Returns**: User input as null-terminated string
-- **Max Length**: 256 characters
+```cpp
+int strlen(const char* str)
+```
+Returns the length of a string.
+- **Parameters:**
+  - `str`: Input string
+- **Returns:** String length
+
+```cpp
+int strcmp(const char* str1, const char* str2)
+```
+Compares two strings.
+- **Parameters:**
+  - `str1`: First string
+  - `str2`: Second string
+- **Returns:** 0 if equal, non-zero if different
+
+```cpp
+void memcpy(void* dest, const void* src, int count)
+```
+Copies memory from source to destination.
+- **Parameters:**
+  - `dest`: Destination pointer
+  - `src`: Source pointer
+  - `count`: Number of bytes to copy
+
+```cpp
+void memset(void* dest, char val, int count)
+```
+Sets memory to a specific value.
+- **Parameters:**
+  - `dest`: Destination pointer
+  - `val`: Value to set
+  - `count`: Number of bytes to set
 
 ## Bootloader
 

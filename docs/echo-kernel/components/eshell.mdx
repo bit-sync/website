@@ -1,0 +1,81 @@
+---
+sidebar_position: 5
+---
+
+# Eshell
+
+Eshell is the interactive shell interface for the Echo Kernel. It provides a command-line interface for interacting with the system.
+
+## Features
+
+- Command-line interface with colored prompt
+- Command history support
+- Error handling for unknown commands
+- Built-in system commands
+
+## Command Prompt
+
+The Eshell prompt consists of two parts:
+- Username and system identifier (`user@system:$`) in red
+- Command marker (`>`) in light blue
+
+## Available Commands
+
+### clear
+Clears the screen, removing all previous output.
+
+**Usage:**
+```bash
+clear
+```
+
+### shutdown
+Safely shuts down the system using multiple methods:
+1. ACPI shutdown (QEMU)
+2. APM shutdown (Bochs, older QEMU)
+3. Keyboard controller reset
+4. CPU halt (fallback)
+
+**Usage:**
+```bash
+shutdown
+```
+
+### help
+Displays a list of available commands with their descriptions.
+
+**Usage:**
+```bash
+help
+```
+
+## Implementation Details
+
+### Color Scheme
+- Prompt: Red (`CL_RED`)
+- Command marker: Light Blue (`CL_LIGHT_BLUE`)
+- Help text: Light Blue (`CL_LIGHT_BLUE`)
+- Error messages: Light Blue (`CL_LIGHT_BLUE`)
+- User input: Light Grey (`CL_LIGHT_GREY`)
+- Welcome message: Light Green (`CL_LIGHT_GREEN`)
+- Shutdown message: Light Red (`CL_LIGHT_RED`)
+
+### Source Files
+- Main implementation: `src/kernel/kernel.cpp`
+- Display functions: `src/sys/display.h`
+- Keyboard input: `src/sys/keyboard.h`
+- Port I/O: `src/sys/ports.h`
+
+### Architecture
+The shell is implemented in the `kernel::eshell` namespace and consists of two main functions:
+- `start_eshell()`: Initializes the shell and displays the welcome message
+- `loop()`: Handles the command input and execution loop
+
+## Future Enhancements
+
+Planned features for future versions:
+- Command history navigation
+- Tab completion
+- File system commands
+- Process management commands
+- System information commands
